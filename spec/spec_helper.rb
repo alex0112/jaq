@@ -1,5 +1,6 @@
 require "bundler/setup"
 require "jaq"
+require "jaq/game"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
