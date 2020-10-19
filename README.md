@@ -1,7 +1,7 @@
 > This README is to provide some insight into my thought process for the code contained in this application.
 
 # Jaq
-Jaq is the beginnings of a small ruby gem that plays a command line game of blackjack. I did my best to limit myself to four hours on this project, and so the project is less complete than I would like. I emphasized readabilty in the code, and proper abstraction. Initially I followed a Test Driven Development style, but this proved to be time consuming and considering the four hour constraint on the project I chose to forgo that aspect of the program. I feel that unit testing is one of my largest strengths as a developer and I can provide other examples of unit tested code I have developed upon request.
+Jaq is the beginnings of a small ruby gem that plays a command line game of blackjack. I did my best to limit myself to four hours on this project, and so the end result is less complete than I would like. I emphasized readabilty in the code and proper abstraction. Initially I followed a Test Driven Development style, but this proved to be time consuming and considering the four hour constraint on the project I chose to forgo that aspect of the program. I feel that unit testing is one of my largest strengths as a developer and I can provide other examples of unit tested code I have developed upon request.
 
 ### Top Level Logic:
 I chose to begin the begin the process by writing out pseudo-ruby of what the main event loop for the game would look like. Which can be seen in the top-level module `lib/jaq.rb`:
