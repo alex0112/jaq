@@ -6,7 +6,7 @@ module Jaq
 
   def run()
     dealer = Jaq::Dealer.new()
-    players = [Jaq.Player.new("Player 1", dealer)]
+    players = [Jaq::Player.new("Player 1", dealer)]
 
     while dealer.still_playing?(players) and players.all?(&:still_playing?) do
       dealer.take_turn()

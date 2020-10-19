@@ -1,40 +1,30 @@
+> This README is to provide some insight into my thought process for the code contained in this application.
+
 # Jaq
+Jaq is the beginnings of a small ruby gem that plays a command line game of blackjack. I did my best to limit myself to four hours on this project, and so the project is less complete than I would like. I emphasized readabilty in the code, and proper abstraction. Initially I followed a Test Driven Development style, but this proved to be time consuming and considering the four hour constraint on the project I chose to forgo that aspect of the program. I feel that unit testing is one of my largest strengths as a developer and I can provide other examples of unit tested code I have developed upon request.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/jaq`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
+### Top Level Logic:
+	I chose to begin the begin the process by writing out pseudo-ruby of what the main event loop for the game would look like. Which can be seen in the top-level module `lib/jaq.rb`:
+	
 ```ruby
-gem 'jaq'
+def run()
+  dealer = Jaq::Dealer.new()
+  players = [Jaq::Player.new("Player 1", dealer)]
+  
+  while dealer.still_playing?(players) and players.all?(&:still_playing?) do
+    dealer.take_turn()
+    players.each { |player| player.take_turn() }
+  end
+  
+end
 ```
 
-And then execute:
+### Abstractions:
+- The player class (in `lib/jaq/player.rb`) implements methods that are used to drive the logic within the main loop. 
 
-    $ bundle install
+- The dealer class in `lib/dealer.rb` inherits most of its functionality from the player class, with the exception of the overridden method `take_turn`:  Where `take_turn` for a Player normally provides a prompt for user input and allows the player to hit or hold, the Dealer overrides this behaviour and instead checks to see if one of the three conditions in which the dealer must hit is satisfied. The Dealer also requires a set of players to play with.
 
-Or install it yourself as:
-
-    $ gem install jaq
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/jaq.
+- I stumbled upon a [card gem](https://github.com/jdan/rubycards) on Github with some nice ASCII graphics representing cards which from which I intended to use the Card class they provided, while either building my own or extending the existing classes in the library for Decks and Hands. I was unable to work on this aspect of the game due to the time constraint.
 
 
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+I hope this document was helpful in gaining insight into my thought process on this project. Please feel free and reach out to me if you have any questions. My [Github Profile](https://github.com/alex0112) also contains other examples of my work and coding style. Best of luck with your hiring process.

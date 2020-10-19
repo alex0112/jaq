@@ -10,7 +10,7 @@ module Jaq
 
     private
     def generate_players(number)
-      (1..number).map { |n| n }
+      (1..number).map { |n| n } 
     end
 
   end
